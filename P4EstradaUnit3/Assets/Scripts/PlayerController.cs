@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     private AudioSource playerAudio;
-    public int JumpsAllowed = 2;
+    public bool doubleSpeed = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -30,16 +30,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+       
         if (Input.GetKey(KeyCode.Space) && isOnGround && !gameOver)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOnGround = false;
            
             playerAnim.SetTrigger("Jump_trig");
             playerAudio.PlayOneShot(jumpSound, 1.0f);
-            JumpsAllowed = JumpsAllowed - 1;
-            
-            
-           
+            doubleJumpUsed = false; // Reset double jump when player jumps from the ground
+
+
+
+        }
+        else if(Input.GetKeyDown(KeyCode.Space) && !isOnGround && !doubleJumpUsed)
+        {
+            doubleJumpUsed = true; // Mark double jump as used
+            playerRb.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
+            playerAnim.Play("Running_Jump", 3, 0f);
+            playerAudio.PlayOneShot(jumpSound, 1.0f);
+
         }
         
     }
@@ -49,7 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             isOnGround = true;
            
-             JumpsAllowed = 2;
+             
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
@@ -57,7 +68,7 @@ public class PlayerController : MonoBehaviour
             gameOver = true;
             Debug.Log("Game Over!");
             playerAnim.SetBool("Death_b", true);
-                playerAnim.SetInteger("DeathType_int", 1);
+             playerAnim.SetInteger("DeathType_int", 1);
             playerAudio.PlayOneShot(crashSound, 1.0f);
         }
 
