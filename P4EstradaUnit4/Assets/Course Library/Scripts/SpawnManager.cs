@@ -1,18 +1,17 @@
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
-{   public GameObject enemyPrefab; // Reference to the enemy prefab
+{  
+    public GameObject enemyPrefab; // Reference to the enemy prefab
     private float spawnRange = 9.0f; // Range within which enemies will spawn
     public int enemyCount;
-    public int waveNumber = 1;
-    public GameObject powerupPrefab;
    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
 
-        SpawnEnemyWave();
+        SpawnEnemyWave(3);
         
         
     }
@@ -20,13 +19,16 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        
+        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length; // Count the number of enemies currently in the scene
+        if(enemyCount == 0)
+        {
+            SpawnEnemyWave(1);
+        }
     }
-    void SpawnEnemyWave()
+    void SpawnEnemyWave(int enemiesToSpawn)
     {
 
-        for (int i = 0; 1 < 3 ; i++)
+        for (int i = 0; 1 < enemiesToSpawn; i++)
         {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
