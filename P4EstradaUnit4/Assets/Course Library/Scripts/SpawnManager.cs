@@ -10,31 +10,23 @@ public class SpawnManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-       
+
+
+        SpawnEnemyWave();
         
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-        SpawnEnemyWave(waveNumber);
+        
     }
    
     // Update is called once per frame
     void Update()
     {
-        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
-        if (enemyCount == 0)
-        {
-            
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation); Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-        }
-       // if (transform.position.z < -10) { Destroy(gameObject); }
-       
+        
         
     }
-    void SpawnEnemyWave(int enemiesToSpawn)
+    void SpawnEnemyWave()
     {
 
-        for (int i = 0; 1 < enemiesToSpawn; i++)
+        for (int i = 0; 1 < 3 ; i++)
         {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
