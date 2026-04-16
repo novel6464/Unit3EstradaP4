@@ -3,18 +3,37 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {   public GameObject enemyPrefab; // Reference to the enemy prefab
     private float spawnRange = 9.0f; // Range within which enemies will spawn
-
+    public int enemyCount;
+    public int waveNumber = 1;
+    public GameObject powerupPrefab;
+   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-        Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation); // Spawn an enemy at the origin       
-    }
+       
+        SpawnEnemyWave(waveNumber);
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
 
+    }
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i=0; 1< enemiesToSpawn; i++)
+        {
+                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+        
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.position.z < -10) { Destroy(gameObject); }
+        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
+        if (enemyCount == 0)
+        {
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
+        }
     }
     private Vector3 GenerateSpawnPosition()
     {

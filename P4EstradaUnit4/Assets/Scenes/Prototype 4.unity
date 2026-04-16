@@ -149,6 +149,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3418853432094903563, guid: 3a1baac2543177f4488ddef23cea338a, type: 3}
+  enemyCount: 4
+  waveNumber: 1
+  powerupPrefab: {fileID: 8017898266027260562, guid: 71ed51a0f01b5ba48bf72fc8eb246737, type: 3}
 --- !u!4 &13753457
 Transform:
   m_ObjectHideFlags: 0
@@ -787,6 +790,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
+      propertyPath: hasPowerup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: powerupIndicator
       value: 
       objectReference: {fileID: 3635126128293775515, guid: c2beb67ba63bea7439db32a8d6913a5f, type: 3}
@@ -832,6 +839,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2564718608770732280, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2564718608770732280, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9176748890427243391, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
