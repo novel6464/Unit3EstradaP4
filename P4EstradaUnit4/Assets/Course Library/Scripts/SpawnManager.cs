@@ -11,29 +11,34 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
        
-        SpawnEnemyWave(waveNumber);
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
-
-    }
-    void SpawnEnemyWave(int enemiesToSpawn)
-    {
-        for (int i=0; 1< enemiesToSpawn; i++)
-        {
-                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-        }
         
+        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        SpawnEnemyWave(waveNumber);
     }
+   
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < -10) { Destroy(gameObject); }
         enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
         if (enemyCount == 0)
         {
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            
             waveNumber++;
             SpawnEnemyWave(waveNumber);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation); Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         }
+       // if (transform.position.z < -10) { Destroy(gameObject); }
+       
+        
+    }
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+
+        for (int i = 0; 1 < enemiesToSpawn; i++)
+        {
+            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+        }
+
     }
     private Vector3 GenerateSpawnPosition()
     {
@@ -42,4 +47,5 @@ public class SpawnManager : MonoBehaviour
         Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
         return randomPos;
     }
+
 }

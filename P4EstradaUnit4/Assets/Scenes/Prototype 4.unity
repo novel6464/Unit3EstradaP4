@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3418853432094903563, guid: 3a1baac2543177f4488ddef23cea338a, type: 3}
-  enemyCount: 4
+  enemyCount: 0
   waveNumber: 1
   powerupPrefab: {fileID: 8017898266027260562, guid: 71ed51a0f01b5ba48bf72fc8eb246737, type: 3}
 --- !u!4 &13753457
@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: hasPowerup
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: powerupIndicator

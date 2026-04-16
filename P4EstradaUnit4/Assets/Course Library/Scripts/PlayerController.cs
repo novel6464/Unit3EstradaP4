@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     private GameObject focalPoint;
     public bool hasPowerup;
-    private float powerupStrength = 1500.0f;
+    private float powerupStrength = 15.0f;
     public GameObject powerupIndicator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
