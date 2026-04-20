@@ -1,45 +1,45 @@
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
-{  
-    public GameObject enemyPrefab; // Reference to the enemy prefab
-    private float spawnRange = 9.0f; // Range within which enemies will spawn
+{
+    public GameObject[] enemyPrefab;
+    private float spawnRange = 9.0f;
     public int enemyCount;
-   
+    public int waveNumber = 1;
+    public GameObject[] powerPrefabs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-
-        SpawnEnemyWave(3);
-        
-        
+        SpawnEnemyWave(waveNumber);
+        int randomPower = Random.Range(0, powerPrefabs.Length);
+        Instantiate(powerPrefabs[randomPower], GenerateSpawnPosition(), powerPrefabs[randomPower].transform.rotation);
     }
-   
+
     // Update is called once per frame
     void Update()
     {
-        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length; // Count the number of enemies currently in the scene
-        if(enemyCount == 0)
+        enemyCount = FindObjectsByType<Enemy>(FindObjectsSortMode.None).Length;
+        if (enemyCount == 0)
         {
-            SpawnEnemyWave(1);
+            Instantiate(powerPrefab, GenerateSpawnPosition(), powerPrefab.transform.rotation);
+            waveNumber++;
+            SpawnEnemyWave(waveNumber);
         }
     }
-    void SpawnEnemyWave(int enemiesToSpawn)
-    {
 
-        for (int i = 0; 1 < enemiesToSpawn; i++)
-        {
-            Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
-        }
-
-    }
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
         float spawnPosZ = Random.Range(-spawnRange, spawnRange);
-        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
-        return randomPos;
+        Vector3 ramdomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+        return ramdomPos;
     }
-
-}
+    void SpawnEnemyWave(int enemiesToSpawn)
+    {
+        for (int i = 0; i < enemiesToSpawn; i++)
+        {
+            int randomEnemy = Random.Range(0, enemyPrefab.Length);
+            Instantiate(enemyPrefab[randomEnemy], GenerateSpawnPosition(), enemyPrefab[randomEnemy].transform.rotation);
+        }
+    }
+}   
