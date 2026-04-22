@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
     public bool hasPowerup;
     private float powerupStrength = 30.0f;
     public GameObject powerupIndicator;
+   
 
-    public PowerUpType currentPowerUp = PowerUpType.None;
+    public PowerUpType currentPowerUp = PowerUpType.Pushback;
 
     public GameObject rocketPrefab;
     private GameObject tmpRocket;
