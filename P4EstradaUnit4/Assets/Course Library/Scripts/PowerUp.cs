@@ -1,8 +1,9 @@
 using UnityEngine;
 
+public enum PowerUpType { None, Speed, Pushback, Rockets, Smash }
 public class PowerUp : MonoBehaviour
 {
-    public enum PowerUpType { Speed, Pushback, Rockets, Smash }
+    
     public PowerUpType powerUpType;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
