@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 170148753570279280}
   - component: {fileID: 6180246787780770811}
   - component: {fileID: 7511222152524232984}
-  - component: {fileID: -4289244401178405745}
+  - component: {fileID: -5037474605889550692}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Powerup
@@ -109,7 +109,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4289244401178405745
+--- !u!114 &-5037474605889550692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 257419867282850691}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da978690b65dce4c95879c612f83e93, type: 3}
+  m_Script: {fileID: 11500000, guid: 610f7a1896c0ab64aaf36b50e701f8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpType: 3

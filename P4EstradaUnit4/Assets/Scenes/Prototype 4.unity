@@ -758,11 +758,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: speed
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: hasPowerup
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: rocketPrefab
@@ -770,7 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 257419867282850691, guid: 24c06a0196c1f1147969bdc1b6d1581a, type: 3}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: currentPowerUp
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1152342610351008579, guid: a3f2585801906d14c833cc35ca7bcc8d, type: 3}
       propertyPath: powerupIndicator
