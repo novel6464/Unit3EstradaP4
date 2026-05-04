@@ -1,15 +1,22 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> targets;
-    public GameObject[] targets2;
+
+    public List<GameObject> targets;    
     private float spawnRate = 1.0f;
     private int score;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
+    public GameManager gameManager; 
+    public bool isGameActive;
+    public ParticleSystem explosionParticle;
+    public int pointValue;
+    public Button restartButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,28 +24,60 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         score = 0;
         UpdateScore(0);
+        isGameActive = true;        
 
     }
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        isGameActive = false;
+        restartButton.gameObject.SetActive(true);
+    }
+    IEnumerator SpawnTarget()
+    {
+        while (isGameActive)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            int index = Random.Range(0, targets.Count);
+            Instantiate(targets[index]);
+           
+        }
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
 
+    }   
+   
     // Update is called once per frame
     void Update()
     {
         
     }
-    IEnumerator SpawnTarget()
+    private void OnMouseDown()
     {
-        while (true)
+        if (gameManager.isGameActive)
         {
-           
-            yield return new WaitForSeconds(spawnRate);
-            int index = Random.Range(0, targets.Count);
-            Instantiate(targets[index]);
+            Destroy(gameObject);
+            Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);       
+            gameManager.UpdateScore(pointValue);
         }
     }
 
-    public void UpdateScore(int scoreToAdd)
+
+    private void OnTriggerEnter(Collider other)
     {
-        score += scoreToAdd;
-        scoreText.text = "Score: " + score;
+        Destroy(gameObject);
+        if (!gameObject.CompareTag("Bad"))
+        {
+            gameManager.GameOver();
+        }
     }
 }
