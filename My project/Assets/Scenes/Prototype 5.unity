@@ -2412,10 +2412,10 @@ MonoBehaviour:
   gameOverText: {fileID: 1860409995}
   gameManager: {fileID: 0}
   isGameActive: 0
-  explosionParticle: {fileID: 0}
+  explosionParticle: {fileID: 7303472089845130122, guid: 6cbc21f5e9162483993a2b84b14d5ac8, type: 3}
   pointValue: 5
   restartButton: {fileID: 475942183}
-  titleScreen: {fileID: 0}
+  titleScreen: {fileID: 1445298624}
 --- !u!1 &1767473257
 GameObject:
   m_ObjectHideFlags: 0
