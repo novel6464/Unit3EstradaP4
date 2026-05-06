@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 924540513627759150}
   - component: {fileID: 4279461731908847841}
   - component: {fileID: 2393373386499605104}
-  - component: {fileID: 2409409026019936290}
+  - component: {fileID: -3942691423052699618}
+  - component: {fileID: -88074646648402924}
+  - component: {fileID: -4669173818701096542}
   m_Layer: 0
   m_Name: Bad1
   m_TagString: Untagged
@@ -87,7 +89,55 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2409409026019936290
+--- !u!54 &-3942691423052699618
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898506701064729194}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &-88074646648402924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898506701064729194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.42912176, y: 0.5520757, z: 0.46483076}
+  m_Center: {x: 0, y: -0.02673658, z: -0.023982435}
+--- !u!114 &-4669173818701096542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,9 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc9f24641d0d6445aefbe591078fbfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetRb: {fileID: 0}
   minSpeed: 12
   maxSpeed: 16
   maxTorque: 10
   xRange: 4
   yRange: 6
+  pointValue: 0
+  explosionParticle: {fileID: 7303472089845130122, guid: 6cbc21f5e9162483993a2b84b14d5ac8, type: 3}

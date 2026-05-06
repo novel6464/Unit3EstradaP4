@@ -17,22 +17,31 @@ public class GameManager : MonoBehaviour
     public ParticleSystem explosionParticle;
     public int pointValue;
     public Button restartButton;
+    public GameObject titleScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(SpawnTarget());
-        score = 0;
-        UpdateScore(0);
-        isGameActive = true;        
+        
 
+    }
+    public void StartGame(int difficulty)
+    {
+        isGameActive = true;
+        score = 0;
+        StartCoroutine(SpawnTarget());
+        titleScreen.SetActive(false);
+        spawnRate /= difficulty;
+        UpdateScore(0);
+        
     }
     public void GameOver()
     {
+        restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         Time.timeScale = 0;
         isGameActive = false;
-        restartButton.gameObject.SetActive(true);
+   
     }
     IEnumerator SpawnTarget()
     {
