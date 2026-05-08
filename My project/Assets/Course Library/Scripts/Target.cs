@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
     public float maxTorque = 10;    
     public float xRange = 4;
     public float yRange = 6;
-    private GameManager gameManager;
+    private Game_Manager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,7 +18,7 @@ public class Target : MonoBehaviour
         targetRb.AddForce(Vector3.up * Random.Range(minSpeed, maxSpeed), ForceMode.Impulse);
         targetRb.AddTorque(Random.Range(-maxTorque, maxTorque), Random.Range(-maxTorque, maxTorque), Random.Range(-maxTorque, maxTorque), ForceMode.Impulse); 
         transform.position = new Vector3(Random.Range(-xRange, xRange), -yRange);
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("Game Manager").GetComponent<Game_Manager>();
     }
 
     // Update is called once per frame
