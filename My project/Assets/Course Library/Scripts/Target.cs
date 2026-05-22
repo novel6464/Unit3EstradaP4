@@ -11,6 +11,7 @@ public class Target : MonoBehaviour
     private Game_Manager gameManager;
     public int pointValue;
     public ParticleSystem explosionParticle;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,9 +50,10 @@ public class Target : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Destroy(gameObject);
-        if (!gameObject.CompareTag("Bad"))
+        if (!gameObject.CompareTag("Bad") && gameManager.isGameActive)
         {
-            gameManager.GameOver();
+            gameManager.UpdateLives(-1);
+            
         }
     }
 }
